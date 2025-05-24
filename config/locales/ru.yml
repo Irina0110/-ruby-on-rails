@@ -1,0 +1,48 @@
+ru:
+  errors:
+    messages:
+      not_saved: "Не удалось сохранить %{resource}: %{count} ошибок"
+      blank: "не может быть пустым"
+      too_short: "слишком короткий (минимум %{count} символов)"
+      taken: "уже занят"
+      invalid: "имеет неверный формат"
+      confirmation: "не совпадает с подтверждением"
+      invalid_credentials: "Неверный email или пароль"
+      user_not_found: "Пользователь с таким email не найден"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email не может быть пустым"
+              taken: "Этот email уже зарегистрирован"
+              invalid: "Некорректный формат email"
+            password:
+              blank: "Пароль не может быть пустым"
+              too_short: "Пароль слишком короткий (минимум %{count} символов)"
+            password_confirmation:
+              confirmation: "Пароли не совпадают"
+  devise:
+    sessions:
+      user:
+        email:
+          blank: "Введите email"
+        password:
+          blank: "Введите пароль"
+  main:
+    contacts:
+      title: "Свяжитесь с нами"
+      contact_info: "Контактная информация"
+      address: "Адрес"
+      phone: "Телефон"
+      email: "Email"
+      working_hours: "Время работы"
+      write_us: "Напишите нам"
+      your_name: "Ваше имя"
+      message: "Сообщение"
+      send: "Отправить"
+      working_hours_schedule:
+        weekdays: "Понедельник - Пятница: 9:00 - 18:00"
+        saturday: "Суббота: 10:00 - 16:00"
+        sunday: "Воскресенье: выходной" 

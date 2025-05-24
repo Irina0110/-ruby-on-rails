@@ -1,0 +1,34 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+  <%# Карточка "Добавить отель" %>
+  <div class="col">
+    <div class="card h-100 text-center d-flex align-items-center justify-content-center" style="border: 2px dashed #888;">
+      <%= link_to new_hotel_path(locale: I18n.locale), style: "text-decoration: none; color: #555; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;" do %>
+        <span style="font-size: 48px; margin-bottom: 10px;">+</span>
+        <span><%= tdb('main.add_hotel') %></span>
+      <% end %>
+    </div>
+  </div>
+
+  <% @hotels.each do |hotel| %>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <% if hotel.images.any? && hotel.images.first.file? %>
+          <%= image_tag hotel.images.first.file.url, class: "card-img-top", style: "object-fit: cover; height: 180px;" %>
+        <% else %>
+          <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 180px;">
+            <span class="text-muted"><%= tdb('hotel.no_photos') %></span>
+          </div>
+        <% end %>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-2"><%= hotel.name %></h5>
+          <p class="card-text mb-1">
+            <i class="bi bi-geo-alt"></i>
+            <%= hotel.city&.name %>,
+            <%= hotel.country&.name %>
+          </p>
+          <%= link_to tdb('main.details'), hotel_path(hotel, locale: I18n.locale), class: "btn btn-outline-primary mt-auto" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div> 

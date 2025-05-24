@@ -1,0 +1,14 @@
+<h1><%= @image.name %></h1>
+<%= image_tag @image.file, width: 300 if @image.file.present? %>
+
+<h3>Средняя оценка: <%= @average_rating %></h3>
+
+<% if user_signed_in? %>
+  <h4>Ваша оценка: <%= @user_rating || "ещё не поставлена" %></h4>
+  <%= form_with url: rate_image_path(@image), method: :post do %>
+    <%= number_field_tag :value, @user_rating, in: 1..5 %>
+    <%= submit_tag "Поставить оценку" %>
+  <% end %>
+<% else %>
+  <p><%= link_to "Войдите", new_user_session_path %>, чтобы поставить оценку</p>
+<% end %>

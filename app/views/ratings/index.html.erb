@@ -1,0 +1,59 @@
+<h1>Рейтинг отелей</h1>
+
+<%= form_with url: ratings_path, method: :get, local: true, class: "row g-3 mb-4" do %>
+  <div class="col-md-3">
+    <%= label_tag :name, tdb('hotel.name') %>
+    <%= text_field_tag :name, params[:name], class: "form-control" %>
+  </div>
+  <div class="col-md-2">
+    <%= label_tag :country_id, tdb('hotel.country') %>
+    <%= select_tag :country_id, options_from_collection_for_select(@countries, :id, :name, params[:country_id]), include_blank: "Все", class: "form-select" %>
+  </div>
+  <div class="col-md-2">
+    <%= label_tag :city_id, tdb('hotel.city') %>
+    <%= select_tag :city_id, options_from_collection_for_select(@cities, :id, :name, params[:city_id]), include_blank: "Все", class: "form-select" %>
+  </div>
+  <div class="col-md-2">
+    <%= label_tag :min_rating, tdb('filter.min_rating') %>
+    <%= number_field_tag :min_rating, params[:min_rating], class: "form-control", min: 0, max: 5, step: 0.1 %>
+  </div>
+  <div class="col-md-2">
+    <%= label_tag :max_rating, tdb('filter.max_rating') %>
+    <%= number_field_tag :max_rating, params[:max_rating], class: "form-control", min: 0, max: 5, step: 0.1 %>
+  </div>
+  <div class="col-md-1 d-flex align-items-end">
+    <%= submit_tag tdb('filter.search'), class: "btn btn-primary w-100" %>
+  </div>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= tdb('filter.name') %></th>
+      <th><%= tdb('hotel.country') %></th>
+      <th><%= tdb('hotel.city') %></th>
+      <th><%= tdb('hotel.average_rating') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @hotels.any? %>
+      <% @hotels.each do |hotel| %>
+        <tr>
+          <td><%= link_to hotel.name, hotel_path(hotel, locale: I18n.locale) %></td>
+          <td><%= hotel.country&.name %></td>
+          <td><%= hotel.city&.name %></td>
+          <td>
+            <% avg = hotel.values.average(:value)&.round(2) || 0 %>
+            <span class="badge bg-success"><%= avg %></span>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4" class="text-center text-muted">
+          <%= tdb('main.no_hotels') %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

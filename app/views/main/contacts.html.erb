@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h1 class="h3 mb-0"><%= tdb('main.contacts.title') %></h1>
+        </div>
+        <div class="card-body">
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <h5 class="mb-3"><%= t('main.contacts.contact_info') %></h5>
+              <p><i class="fas fa-map-marker-alt"></i> <%= tdb('main.contacts.address') %>: г. Санкт-Петербург, ул. Политехническая, д. 1</p>
+              <p><i class="fas fa-phone"></i> <%= tdb('main.contacts.phone') %>: +7 (999) 123-45-67</p>
+              <p><i class="fas fa-envelope"></i> <%= tdb('main.contacts.email') %>: info@example.com</p>
+            </div>
+            <div class="col-md-6">
+              <h5 class="mb-3"><%= tdb('main.contacts.working_hours') %></h5>
+              <p><%= tdb('main.contacts.working_hours_schedule.weekdays') %></p>
+              <p><%= tdb('main.contacts.working_hours_schedule.saturday') %></p>
+              <p><%= tdb('main.contacts.working_hours_schedule.sunday') %></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <h5 class="mb-3"><%= tdb('main.contacts.write_us') %></h5>
+              <%= form_with url: "#", local: true, class: "needs-validation", novalidate: true do |f| %>
+                <div class="mb-3">
+                  <%= f.label :name, tdb('main.contacts.your_name'), class: "form-label" %>
+                  <%= f.text_field :name, class: "form-control", required: true %>
+                </div>
+
+                <div class="mb-3">
+                  <%= f.label :email, tdb('main.contacts.email'), class: "form-label" %>
+                  <%= f.email_field :email, class: "form-control", required: true %>
+                </div>
+
+                <div class="mb-3">
+                  <%= f.label :message, tdb('main.contacts.message'), class: "form-label" %>
+                  <%= f.text_area :message, class: "form-control", rows: 5, required: true %>
+                </div>
+
+                <%= f.submit tdb('main.contacts.send'), class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :styles do %>
+  <style>
+    .card {
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .card-header {
+      border-bottom: none;
+    }
+    .fas {
+      margin-right: 10px;
+      color: #0d6efd;
+    }
+  </style>
+<% end %> 
