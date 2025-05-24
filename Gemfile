@@ -98,7 +98,7 @@ gem "hotwire-rails"
 
 gem "pg"
 
-gem "carrierwave", "~> 2.0"
+gem "carrierwave", "~> 3.1"
 
 # Для работы с переменными окружения
 gem "dotenv-rails", groups: [ :development, :test ]
