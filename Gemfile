@@ -66,7 +66,7 @@ gem "sass"
 
 gem "slim-rails"
 
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", "~> 6.0"
 
 gem "haml-rails"
 
