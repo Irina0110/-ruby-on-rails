@@ -88,7 +88,7 @@ group :development, :test do
   gem "binding_of_caller"
 end
 
-gem "font-awesome-sass", "~> 5.0"
+gem "font-awesome-sass", "~> 6.7"
 
 gem "turbolinks", "~> 5"
 
