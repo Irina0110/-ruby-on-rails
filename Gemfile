@@ -76,7 +76,7 @@ gem "jquery-rails"
 
 gem "rails-asset-jqueryui"
 
-gem "bootstrap", "~> 4.6"
+gem "bootstrap", "~> 5.3"
 
 gem "sassc-rails"
 
